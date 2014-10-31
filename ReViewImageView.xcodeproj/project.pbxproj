@@ -1,0 +1,501 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BAE7B131A0343FF00EB400E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAE7B121A0343FF00EB400E /* Foundation.framework */; };
+		1BAE7B151A0343FF00EB400E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAE7B141A0343FF00EB400E /* CoreGraphics.framework */; };
+		1BAE7B171A0343FF00EB400E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAE7B161A0343FF00EB400E /* UIKit.framework */; };
+		1BAE7B1D1A0343FF00EB400E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1BAE7B1B1A0343FF00EB400E /* InfoPlist.strings */; };
+		1BAE7B1F1A0343FF00EB400E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE7B1E1A0343FF00EB400E /* main.m */; };
+		1BAE7B231A0343FF00EB400E /* LWCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE7B221A0343FF00EB400E /* LWCAppDelegate.m */; };
+		1BAE7B251A0343FF00EB400E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BAE7B241A0343FF00EB400E /* Images.xcassets */; };
+		1BAE7B2C1A0343FF00EB400E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAE7B2B1A0343FF00EB400E /* XCTest.framework */; };
+		1BAE7B2D1A0343FF00EB400E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAE7B121A0343FF00EB400E /* Foundation.framework */; };
+		1BAE7B2E1A0343FF00EB400E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAE7B161A0343FF00EB400E /* UIKit.framework */; };
+		1BAE7B361A0343FF00EB400E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1BAE7B341A0343FF00EB400E /* InfoPlist.strings */; };
+		1BAE7B381A0343FF00EB400E /* ReViewImageViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE7B371A0343FF00EB400E /* ReViewImageViewTests.m */; };
+		1BAE7B431A03442B00EB400E /* ReviewImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE7B421A03442B00EB400E /* ReviewImageViewController.m */; };
+		1BAE7B4A1A035CAB00EB400E /* XHImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE7B451A035CAB00EB400E /* XHImageViewer.m */; };
+		1BAE7B4B1A035CAB00EB400E /* XHViewState.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE7B471A035CAB00EB400E /* XHViewState.m */; };
+		1BAE7B4C1A035CAB00EB400E /* XHZoomingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE7B491A035CAB00EB400E /* XHZoomingImageView.m */; };
+		1BAE7B531A036E0B00EB400E /* clearBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BAE7B4D1A036E0B00EB400E /* clearBG.png */; };
+		1BAE7B541A036E0B00EB400E /* zoomIn.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BAE7B4E1A036E0B00EB400E /* zoomIn.png */; };
+		1BAE7B551A036E0B00EB400E /* zoomOut.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BAE7B4F1A036E0B00EB400E /* zoomOut.png */; };
+		1BAE7B561A036E0B00EB400E /* leftRotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BAE7B501A036E0B00EB400E /* leftRotation.png */; };
+		1BAE7B571A036E0B00EB400E /* rightRotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BAE7B511A036E0B00EB400E /* rightRotation.png */; };
+		1BAE7B581A036E0B00EB400E /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BAE7B521A036E0B00EB400E /* save.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1BAE7B2F1A0343FF00EB400E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BAE7B071A0343FF00EB400E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1BAE7B0E1A0343FF00EB400E;
+			remoteInfo = ReViewImageView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1BAE7B0F1A0343FF00EB400E /* ReViewImageView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReViewImageView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BAE7B121A0343FF00EB400E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1BAE7B141A0343FF00EB400E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1BAE7B161A0343FF00EB400E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1BAE7B1A1A0343FF00EB400E /* ReViewImageView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReViewImageView-Info.plist"; sourceTree = "<group>"; };
+		1BAE7B1C1A0343FF00EB400E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1BAE7B1E1A0343FF00EB400E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1BAE7B201A0343FF00EB400E /* ReViewImageView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReViewImageView-Prefix.pch"; sourceTree = "<group>"; };
+		1BAE7B211A0343FF00EB400E /* LWCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWCAppDelegate.h; sourceTree = "<group>"; };
+		1BAE7B221A0343FF00EB400E /* LWCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LWCAppDelegate.m; sourceTree = "<group>"; };
+		1BAE7B241A0343FF00EB400E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1BAE7B2A1A0343FF00EB400E /* ReViewImageViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReViewImageViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BAE7B2B1A0343FF00EB400E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		1BAE7B331A0343FF00EB400E /* ReViewImageViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReViewImageViewTests-Info.plist"; sourceTree = "<group>"; };
+		1BAE7B351A0343FF00EB400E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1BAE7B371A0343FF00EB400E /* ReViewImageViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReViewImageViewTests.m; sourceTree = "<group>"; };
+		1BAE7B411A03442B00EB400E /* ReviewImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewImageViewController.h; sourceTree = "<group>"; };
+		1BAE7B421A03442B00EB400E /* ReviewImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewImageViewController.m; sourceTree = "<group>"; };
+		1BAE7B441A035CAB00EB400E /* XHImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHImageViewer.h; sourceTree = "<group>"; };
+		1BAE7B451A035CAB00EB400E /* XHImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHImageViewer.m; sourceTree = "<group>"; };
+		1BAE7B461A035CAB00EB400E /* XHViewState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHViewState.h; sourceTree = "<group>"; };
+		1BAE7B471A035CAB00EB400E /* XHViewState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHViewState.m; sourceTree = "<group>"; };
+		1BAE7B481A035CAB00EB400E /* XHZoomingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHZoomingImageView.h; sourceTree = "<group>"; };
+		1BAE7B491A035CAB00EB400E /* XHZoomingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHZoomingImageView.m; sourceTree = "<group>"; };
+		1BAE7B4D1A036E0B00EB400E /* clearBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clearBG.png; sourceTree = "<group>"; };
+		1BAE7B4E1A036E0B00EB400E /* zoomIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zoomIn.png; sourceTree = "<group>"; };
+		1BAE7B4F1A036E0B00EB400E /* zoomOut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zoomOut.png; sourceTree = "<group>"; };
+		1BAE7B501A036E0B00EB400E /* leftRotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftRotation.png; sourceTree = "<group>"; };
+		1BAE7B511A036E0B00EB400E /* rightRotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightRotation.png; sourceTree = "<group>"; };
+		1BAE7B521A036E0B00EB400E /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1BAE7B0C1A0343FF00EB400E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BAE7B151A0343FF00EB400E /* CoreGraphics.framework in Frameworks */,
+				1BAE7B171A0343FF00EB400E /* UIKit.framework in Frameworks */,
+				1BAE7B131A0343FF00EB400E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BAE7B271A0343FF00EB400E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BAE7B2C1A0343FF00EB400E /* XCTest.framework in Frameworks */,
+				1BAE7B2E1A0343FF00EB400E /* UIKit.framework in Frameworks */,
+				1BAE7B2D1A0343FF00EB400E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1BAE7B061A0343FF00EB400E = {
+			isa = PBXGroup;
+			children = (
+				1BAE7B181A0343FF00EB400E /* ReViewImageView */,
+				1BAE7B311A0343FF00EB400E /* ReViewImageViewTests */,
+				1BAE7B111A0343FF00EB400E /* Frameworks */,
+				1BAE7B101A0343FF00EB400E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1BAE7B101A0343FF00EB400E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BAE7B0F1A0343FF00EB400E /* ReViewImageView.app */,
+				1BAE7B2A1A0343FF00EB400E /* ReViewImageViewTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1BAE7B111A0343FF00EB400E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1BAE7B121A0343FF00EB400E /* Foundation.framework */,
+				1BAE7B141A0343FF00EB400E /* CoreGraphics.framework */,
+				1BAE7B161A0343FF00EB400E /* UIKit.framework */,
+				1BAE7B2B1A0343FF00EB400E /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1BAE7B181A0343FF00EB400E /* ReViewImageView */ = {
+			isa = PBXGroup;
+			children = (
+				1BAE7B211A0343FF00EB400E /* LWCAppDelegate.h */,
+				1BAE7B221A0343FF00EB400E /* LWCAppDelegate.m */,
+				1BAE7B411A03442B00EB400E /* ReviewImageViewController.h */,
+				1BAE7B421A03442B00EB400E /* ReviewImageViewController.m */,
+				1BAE7B441A035CAB00EB400E /* XHImageViewer.h */,
+				1BAE7B451A035CAB00EB400E /* XHImageViewer.m */,
+				1BAE7B461A035CAB00EB400E /* XHViewState.h */,
+				1BAE7B471A035CAB00EB400E /* XHViewState.m */,
+				1BAE7B481A035CAB00EB400E /* XHZoomingImageView.h */,
+				1BAE7B491A035CAB00EB400E /* XHZoomingImageView.m */,
+				1BAE7B241A0343FF00EB400E /* Images.xcassets */,
+				1BAE7B191A0343FF00EB400E /* Supporting Files */,
+			);
+			path = ReViewImageView;
+			sourceTree = "<group>";
+		};
+		1BAE7B191A0343FF00EB400E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1BAE7B4D1A036E0B00EB400E /* clearBG.png */,
+				1BAE7B4E1A036E0B00EB400E /* zoomIn.png */,
+				1BAE7B4F1A036E0B00EB400E /* zoomOut.png */,
+				1BAE7B501A036E0B00EB400E /* leftRotation.png */,
+				1BAE7B511A036E0B00EB400E /* rightRotation.png */,
+				1BAE7B521A036E0B00EB400E /* save.png */,
+				1BAE7B1A1A0343FF00EB400E /* ReViewImageView-Info.plist */,
+				1BAE7B1B1A0343FF00EB400E /* InfoPlist.strings */,
+				1BAE7B1E1A0343FF00EB400E /* main.m */,
+				1BAE7B201A0343FF00EB400E /* ReViewImageView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1BAE7B311A0343FF00EB400E /* ReViewImageViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				1BAE7B371A0343FF00EB400E /* ReViewImageViewTests.m */,
+				1BAE7B321A0343FF00EB400E /* Supporting Files */,
+			);
+			path = ReViewImageViewTests;
+			sourceTree = "<group>";
+		};
+		1BAE7B321A0343FF00EB400E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1BAE7B331A0343FF00EB400E /* ReViewImageViewTests-Info.plist */,
+				1BAE7B341A0343FF00EB400E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1BAE7B0E1A0343FF00EB400E /* ReViewImageView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BAE7B3B1A0343FF00EB400E /* Build configuration list for PBXNativeTarget "ReViewImageView" */;
+			buildPhases = (
+				1BAE7B0B1A0343FF00EB400E /* Sources */,
+				1BAE7B0C1A0343FF00EB400E /* Frameworks */,
+				1BAE7B0D1A0343FF00EB400E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReViewImageView;
+			productName = ReViewImageView;
+			productReference = 1BAE7B0F1A0343FF00EB400E /* ReViewImageView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1BAE7B291A0343FF00EB400E /* ReViewImageViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BAE7B3E1A0343FF00EB400E /* Build configuration list for PBXNativeTarget "ReViewImageViewTests" */;
+			buildPhases = (
+				1BAE7B261A0343FF00EB400E /* Sources */,
+				1BAE7B271A0343FF00EB400E /* Frameworks */,
+				1BAE7B281A0343FF00EB400E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BAE7B301A0343FF00EB400E /* PBXTargetDependency */,
+			);
+			name = ReViewImageViewTests;
+			productName = ReViewImageViewTests;
+			productReference = 1BAE7B2A1A0343FF00EB400E /* ReViewImageViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1BAE7B071A0343FF00EB400E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = LWC;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = LWC;
+				TargetAttributes = {
+					1BAE7B291A0343FF00EB400E = {
+						TestTargetID = 1BAE7B0E1A0343FF00EB400E;
+					};
+				};
+			};
+			buildConfigurationList = 1BAE7B0A1A0343FF00EB400E /* Build configuration list for PBXProject "ReViewImageView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1BAE7B061A0343FF00EB400E;
+			productRefGroup = 1BAE7B101A0343FF00EB400E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1BAE7B0E1A0343FF00EB400E /* ReViewImageView */,
+				1BAE7B291A0343FF00EB400E /* ReViewImageViewTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1BAE7B0D1A0343FF00EB400E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BAE7B1D1A0343FF00EB400E /* InfoPlist.strings in Resources */,
+				1BAE7B541A036E0B00EB400E /* zoomIn.png in Resources */,
+				1BAE7B581A036E0B00EB400E /* save.png in Resources */,
+				1BAE7B531A036E0B00EB400E /* clearBG.png in Resources */,
+				1BAE7B551A036E0B00EB400E /* zoomOut.png in Resources */,
+				1BAE7B571A036E0B00EB400E /* rightRotation.png in Resources */,
+				1BAE7B561A036E0B00EB400E /* leftRotation.png in Resources */,
+				1BAE7B251A0343FF00EB400E /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BAE7B281A0343FF00EB400E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BAE7B361A0343FF00EB400E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1BAE7B0B1A0343FF00EB400E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BAE7B4C1A035CAB00EB400E /* XHZoomingImageView.m in Sources */,
+				1BAE7B1F1A0343FF00EB400E /* main.m in Sources */,
+				1BAE7B431A03442B00EB400E /* ReviewImageViewController.m in Sources */,
+				1BAE7B4B1A035CAB00EB400E /* XHViewState.m in Sources */,
+				1BAE7B231A0343FF00EB400E /* LWCAppDelegate.m in Sources */,
+				1BAE7B4A1A035CAB00EB400E /* XHImageViewer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BAE7B261A0343FF00EB400E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BAE7B381A0343FF00EB400E /* ReViewImageViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1BAE7B301A0343FF00EB400E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1BAE7B0E1A0343FF00EB400E /* ReViewImageView */;
+			targetProxy = 1BAE7B2F1A0343FF00EB400E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1BAE7B1B1A0343FF00EB400E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BAE7B1C1A0343FF00EB400E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1BAE7B341A0343FF00EB400E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BAE7B351A0343FF00EB400E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1BAE7B391A0343FF00EB400E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1BAE7B3A1A0343FF00EB400E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1BAE7B3C1A0343FF00EB400E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReViewImageView/ReViewImageView-Prefix.pch";
+				INFOPLIST_FILE = "ReViewImageView/ReViewImageView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1BAE7B3D1A0343FF00EB400E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReViewImageView/ReViewImageView-Prefix.pch";
+				INFOPLIST_FILE = "ReViewImageView/ReViewImageView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		1BAE7B3F1A0343FF00EB400E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ReViewImageView.app/ReViewImageView";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReViewImageView/ReViewImageView-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ReViewImageViewTests/ReViewImageViewTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		1BAE7B401A0343FF00EB400E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ReViewImageView.app/ReViewImageView";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReViewImageView/ReViewImageView-Prefix.pch";
+				INFOPLIST_FILE = "ReViewImageViewTests/ReViewImageViewTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1BAE7B0A1A0343FF00EB400E /* Build configuration list for PBXProject "ReViewImageView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BAE7B391A0343FF00EB400E /* Debug */,
+				1BAE7B3A1A0343FF00EB400E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BAE7B3B1A0343FF00EB400E /* Build configuration list for PBXNativeTarget "ReViewImageView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BAE7B3C1A0343FF00EB400E /* Debug */,
+				1BAE7B3D1A0343FF00EB400E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1BAE7B3E1A0343FF00EB400E /* Build configuration list for PBXNativeTarget "ReViewImageViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BAE7B3F1A0343FF00EB400E /* Debug */,
+				1BAE7B401A0343FF00EB400E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1BAE7B071A0343FF00EB400E /* Project object */;
+}
