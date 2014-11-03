@@ -16,7 +16,11 @@
 
 @end
 
-@implementation XHZoomingImageView
+@implementation XHZoomingImageView {
+    UILabel *promptLable;
+    
+    BOOL isProtrait;
+}
 
 - (void)_setup {
     self.clipsToBounds = YES;
@@ -49,15 +53,21 @@
         NSArray *Items = @[leftRotate,flexibleSpace,zoomOut,flexibleSpace,zoomIn,flexibleSpace,rightRotate,flexibleSpace,Save];
         [_toolBar setItems:Items animated:YES];
     }
-    [self insertSubview:_toolBar aboveSubview:_scrollView];
+    [self insertSubview:_toolBar aboveSubview:_containerView];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.delegate = self;
+    [_scrollView addGestureRecognizer:singleTap];
     
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didDoubleTap:)];
     doubleTap.numberOfTapsRequired = 2;
     doubleTap.delegate = self;
     [_scrollView addGestureRecognizer:doubleTap];
     
+    [singleTap requireGestureRecognizerToFail:doubleTap];
     
-    NSLog(@"%@",self.superview.gestureRecognizers);
+    isProtrait = YES;
 }
 
 - (void)awakeFromNib {
@@ -112,7 +122,6 @@
         _scrollView.zoomScale  = _scrollView.minimumZoomScale;
         [self scrollViewDidZoom:_scrollView];
     }
-//    _containerView.transform = CGAffineTransformRotate(_containerView.transform, M_PI_2);
 }
 
 - (BOOL)isViewing {
@@ -150,15 +159,33 @@
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+
     CGFloat Ws = _scrollView.frame.size.width - _scrollView.contentInset.left - _scrollView.contentInset.right;
     CGFloat Hs = _scrollView.frame.size.height - _scrollView.contentInset.top - _scrollView.contentInset.bottom;
     CGFloat W = _containerView.frame.size.width;
     CGFloat H = _containerView.frame.size.height;
     
+    
     CGRect rct = _containerView.frame;
     rct.origin.x = MAX((Ws-W)/2, 0);
     rct.origin.y = MAX((Hs-H)/2, 0);
     _containerView.frame = rct;
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
+    
+    if (isProtrait) {
+        return;
+    }
+    
+    CGSize CONS = _scrollView.contentSize;
+    _scrollView.contentSize = CGSizeMake(CONS.height, CONS.width);
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+//    NSLog(@"%@",NSStringFromCGRect(_containerView.frame));
+//    NSLog(@"****************%@\n\n",NSStringFromCGRect(_imageView.frame));
 }
 
 - (void)resetZoomScale {
@@ -174,10 +201,23 @@
     _scrollView.maximumZoomScale = MAX(MAX(Rw, Rh), 1);
 }
 
-#pragma mark - doubleTap
+#pragma mark - Tap gesture
 
-- (void)didDoubleTap:(UITapGestureRecognizer*)sender {
-    NSLog(@"doubleTap");
+- (void)handleTap:(UITapGestureRecognizer *)gesture {
+    NSLog(@"\n\n---------------------END--------------------\n\n");
+    
+    NSLog(@"C_frame :%@",NSStringFromCGRect(_containerView.frame));
+    NSLog(@"C_bounds:%@",NSStringFromCGRect(_containerView.bounds));
+    NSLog(@"ImageView:%@",NSStringFromCGRect(_imageView.frame));
+    NSLog(@"\n contentInset:%@,\n contentSize:%@ ,\n frmae:%@ \n\n\n\n",NSStringFromUIEdgeInsets(_scrollView.contentInset),NSStringFromCGSize(_scrollView.contentSize),NSStringFromCGRect(_scrollView.frame));
+}
+
+- (void)didDoubleTap:(UITapGestureRecognizer*)gesture {
+    if (_scrollView.zoomScale != _scrollView.minimumZoomScale) {
+        [_scrollView setZoomScale:_scrollView.minimumZoomScale animated:YES];
+    }else {
+        [_scrollView setZoomScale:_scrollView.maximumZoomScale animated:YES];
+    }
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -192,7 +232,11 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     if ([gestureRecognizer isKindOfClass:NSClassFromString(@"UITapGestureRecognizer")]) {
-        return NO;
+        UITapGestureRecognizer *tapGesture = (UITapGestureRecognizer *)gestureRecognizer;
+        if (tapGesture.numberOfTapsRequired == 2) {
+            [gestureRecognizer requireGestureRecognizerToFail:otherGestureRecognizer];
+            return NO;
+        }
     }
     return YES;
 }
@@ -200,23 +244,129 @@
 #pragma mark - toolBar Action
 
 - (void)leftRotation {
-    NSLog(@"左转");
+    NSLog(@"\n\n\n左转");
+
+    _imageView.transform = CGAffineTransformRotate(_imageView.transform, - M_PI_2);
+    
+    if (_scrollView.minimumZoomScale == 1) {
+        _scrollView.minimumZoomScale = _scrollView.frame.size.width/_imageView.frame.size.width;
+        isProtrait = NO;
+    }else {
+        _scrollView.minimumZoomScale = 1;
+        isProtrait = YES;
+    }
+    [_scrollView setZoomScale:_scrollView.minimumZoomScale animated:NO];
+    
+    NSLog(@"frame :%@",NSStringFromCGRect(_containerView.frame));
+//    CGRect tmp = _containerView.frame;
+//    tmp.origin.x = 0;
+//    tmp.origin.y = 0;
+//    _containerView.bounds = tmp;
+    NSLog(@"bounds:%@",NSStringFromCGRect(_containerView.bounds));
+    NSLog(@"ImageView:%@",NSStringFromCGRect(_imageView.frame));
+    
+    CGRect rct = _imageView.frame;
+    rct.origin.x = 0;
+    rct.origin.y = 0;
+    _imageView.frame = rct;
+    
+    NSLog(@"-----%@",NSStringFromCGRect(_imageView.bounds));
+    NSLog(@"-=-=-=-=-=-===%@",NSStringFromCGRect(_imageView.frame));
+
+//    NSLog(@"\n contentInset:%@,\n contentSize:%@ ,\n frmae:%@ \n\n",NSStringFromUIEdgeInsets(_scrollView.contentInset),NSStringFromCGSize(_scrollView.contentSize),NSStringFromCGRect(_scrollView.frame));
 }
 
 - (void)rightRotation {
     NSLog(@"右转");
+    
+//    _imageView.transform = CGAffineTransformRotate(_imageView.transform, M_PI_2);
+//    
+//    if (_imageView.frame.size.width > _scrollView.frame.size.width) {
+//        _scrollView.minimumZoomScale = _scrollView.frame.size.width/_imageView.frame.size.width;
+//        isProtrait = NO;
+//    }else {
+//        _scrollView.minimumZoomScale = 1;
+//        isProtrait = YES;
+//    }
+//    
+//    [_scrollView setZoomScale:_scrollView.frame.size.width/_imageView.frame.size.width animated:NO];
+    
+    _imageView.transform = CGAffineTransformRotate(_imageView.transform, M_PI_2);
+    
+    if (_scrollView.minimumZoomScale == 1) {
+        _scrollView.minimumZoomScale = _scrollView.frame.size.width/_imageView.frame.size.width;
+        isProtrait = NO;
+    }else {
+        _scrollView.minimumZoomScale = 1;
+        isProtrait = YES;
+    }
+    [_scrollView setZoomScale:_scrollView.minimumZoomScale animated:NO];
+    
+    CGRect rct = _imageView.frame;
+    rct.origin.x = 0;
+    rct.origin.y = 0;
+    _imageView.frame = rct;
 }
 
 - (void)zoomOut {
-    NSLog(@"缩小");
+    
+    if (_scrollView.zoomScale == _scrollView.minimumZoomScale) {
+        [self showPrompt:@"已缩小到最小比例"];
+        return;
+    }
+    
+    if (_scrollView.zoomScale - 0.5 >= _scrollView.minimumZoomScale) {
+        [_scrollView setZoomScale:(_scrollView.zoomScale - 0.5) animated:YES];
+    }else {
+        [_scrollView setZoomScale:_scrollView.minimumZoomScale animated:YES];
+    }
 }
 
 - (void)zoomIn {
     NSLog(@"放大");
+    
+    if (_scrollView.zoomScale == _scrollView.maximumZoomScale) {
+        [self showPrompt:@"已放大到最大比例"];
+        return;
+    }
+    
+    if (_scrollView.zoomScale + 0.5 <= _scrollView.maximumZoomScale) {
+        [_scrollView setZoomScale:(_scrollView.zoomScale + 0.5) animated:YES];
+    }else {
+        [_scrollView setZoomScale:_scrollView.maximumZoomScale animated:YES];
+    }
 }
 
 - (void)savePhoto {
     NSLog(@"保存");
+}
+
+#pragma mark prompt
+
+- (void)showPrompt:(NSString *)message {
+    [self canPerformAction:@selector(hiddenPrompt) withSender:nil];
+    if (promptLable == nil) {
+        promptLable = [[UILabel alloc] initWithFrame:CGRectMake((self.frame.size.width - 180)/2, self.frame.size.height - 100, 180, 40)];
+        promptLable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        promptLable.backgroundColor = [UIColor blackColor];
+        promptLable.textAlignment = NSTextAlignmentCenter;
+        promptLable.textColor = [UIColor whiteColor];
+        
+        promptLable.layer.shadowColor = [UIColor blackColor].CGColor;
+        promptLable.layer.shadowOffset = CGSizeMake(0.0, 2.0);
+        promptLable.layer.shadowOpacity = 3;
+        promptLable.layer.shadowRadius = 10.0;
+        promptLable.layer.cornerRadius = 20.0;
+        
+        [self insertSubview:promptLable aboveSubview:_scrollView];
+    }
+    promptLable.hidden = NO;
+    promptLable.text = message;
+    [self performSelector:@selector(hiddenPrompt) withObject:nil afterDelay:1.5f];
+}
+
+- (void)hiddenPrompt {
+    promptLable.hidden = YES;
 }
 
 

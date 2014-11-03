@@ -34,7 +34,7 @@
     
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
     pan.maximumNumberOfTouches = 1;
-    [self addGestureRecognizer:pan];
+//    [self addGestureRecognizer:pan];
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -135,17 +135,10 @@
                          _scrollView.contentSize = CGSizeMake(_imgViews.count * fullW, 0);
                          _scrollView.contentOffset = CGPointMake(currentPage * fullW, 0);
                          
-                         UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedScrollView:)];
-                         gesture.numberOfTapsRequired = 1;
-                         gesture.delegate = self;
-                         [_scrollView addGestureRecognizer:gesture];
-                         
-//                         UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didDoubleTap:)];
-//                         doubleTap.numberOfTapsRequired = 2;
-//                         doubleTap.delegate = self;
-//                         [_scrollView addGestureRecognizer:doubleTap];
-//                         
-//                         [gesture requireGestureRecognizerToFail:doubleTap];
+//                         UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedScrollView:)];
+//                         gesture.numberOfTapsRequired = 1;
+//                         gesture.delegate = self;
+//                         [_scrollView addGestureRecognizer:gesture];
                          
                          for(UIImageView *view in _imgViews){
                              view.transform = CGAffineTransformIdentity;
