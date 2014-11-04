@@ -119,6 +119,7 @@
         _containerView.bounds = _imageView.bounds;
         
         [self resetZoomScale];
+        [self handleTap:nil];
         _scrollView.zoomScale  = _scrollView.minimumZoomScale;
         [self scrollViewDidZoom:_scrollView];
     }
@@ -137,19 +138,38 @@
 }
 
 - (void)imageDidChange {
-    CGSize size = (self.imageView.image) ? self.imageView.image.size : self.bounds.size;
-    CGFloat ratio = MIN(_scrollView.frame.size.width / size.width, _scrollView.frame.size.height / size.height);
-    CGFloat W = ratio * size.width;
-    CGFloat H = ratio * size.height;
-    self.imageView.frame = CGRectMake(0, 0, W, H);
     
-    _scrollView.zoomScale = 1;
-    _scrollView.contentOffset = CGPointZero;
-    _containerView.bounds = _imageView.bounds;
-    
-    [self resetZoomScale];
-    _scrollView.zoomScale  = _scrollView.minimumZoomScale;
-    [self scrollViewDidZoom:_scrollView];
+    if (isProtrait) {
+        
+        CGSize size = (self.imageView.image) ? self.imageView.image.size : self.bounds.size;
+        CGFloat ratio = MIN(_scrollView.frame.size.width / size.width, _scrollView.frame.size.height / size.height);
+        CGFloat W = ratio * size.width;
+        CGFloat H = ratio * size.height;
+        self.imageView.frame = CGRectMake(0, 0, W, H);
+        
+        _scrollView.zoomScale = 1;
+        _scrollView.contentOffset = CGPointZero;
+        _containerView.bounds = _imageView.bounds;
+        
+        [self resetZoomScale];
+        _scrollView.zoomScale  = _scrollView.minimumZoomScale;
+        [self scrollViewDidZoom:_scrollView];
+        
+    }else {
+        CGSize size = (self.imageView.image) ? self.imageView.image.size : self.bounds.size;
+        CGFloat ratio = MIN(_scrollView.frame.size.width / size.height, _scrollView.frame.size.height / size.width);
+        CGFloat W = ratio * size.width;
+        CGFloat H = ratio * size.height;
+        self.imageView.frame = CGRectMake(0, 0, W, H);
+        
+        _scrollView.zoomScale = 1;
+        _scrollView.contentOffset = CGPointZero;
+        _containerView.bounds = _imageView.bounds;
+        
+        [self resetZoomScale];
+        _scrollView.zoomScale  = _scrollView.minimumZoomScale;
+        [self scrollViewDidZoom:_scrollView];
+    }
 }
 
 #pragma mark- Scrollview delegate
@@ -165,27 +185,10 @@
     CGFloat W = _containerView.frame.size.width;
     CGFloat H = _containerView.frame.size.height;
     
-    
     CGRect rct = _containerView.frame;
     rct.origin.x = MAX((Ws-W)/2, 0);
     rct.origin.y = MAX((Hs-H)/2, 0);
     _containerView.frame = rct;
-}
-
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
-    
-    if (isProtrait) {
-        return;
-    }
-    
-    CGSize CONS = _scrollView.contentSize;
-    _scrollView.contentSize = CGSizeMake(CONS.height, CONS.width);
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-//    NSLog(@"%@",NSStringFromCGRect(_containerView.frame));
-//    NSLog(@"****************%@\n\n",NSStringFromCGRect(_imageView.frame));
 }
 
 - (void)resetZoomScale {
@@ -193,8 +196,14 @@
     CGFloat Rh = _scrollView.frame.size.height / self.imageView.frame.size.height;
     
     CGFloat scale = 1;
-    Rw = MAX(Rw, _imageView.image.size.width / (scale * _scrollView.frame.size.width));
-    Rh = MAX(Rh, _imageView.image.size.height / (scale * _scrollView.frame.size.height));
+    
+    if (isProtrait) {
+        Rw = MAX(Rw, _imageView.image.size.width / (scale * _scrollView.frame.size.width));
+        Rh = MAX(Rh, _imageView.image.size.height / (scale * _scrollView.frame.size.height));
+    }else {
+        Rw = MAX(Rw, _imageView.image.size.width / (scale * _scrollView.frame.size.height));
+        Rh = MAX(Rh, _imageView.image.size.height / (scale * _scrollView.frame.size.width));
+    }
     
     _scrollView.contentSize = _imageView.frame.size;
     _scrollView.minimumZoomScale = 1;
@@ -204,11 +213,12 @@
 #pragma mark - Tap gesture
 
 - (void)handleTap:(UITapGestureRecognizer *)gesture {
-    NSLog(@"\n\n---------------------END--------------------\n\n");
+    NSLog(@"\n\n-------------------------------------------------------\n\n");
     
     NSLog(@"C_frame :%@",NSStringFromCGRect(_containerView.frame));
     NSLog(@"C_bounds:%@",NSStringFromCGRect(_containerView.bounds));
     NSLog(@"ImageView:%@",NSStringFromCGRect(_imageView.frame));
+    NSLog(@"ImageView bounds:%@",NSStringFromCGRect(_imageView.bounds));
     NSLog(@"\n contentInset:%@,\n contentSize:%@ ,\n frmae:%@ \n\n\n\n",NSStringFromUIEdgeInsets(_scrollView.contentInset),NSStringFromCGSize(_scrollView.contentSize),NSStringFromCGRect(_scrollView.frame));
 }
 
@@ -230,17 +240,6 @@
     return YES;
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    if ([gestureRecognizer isKindOfClass:NSClassFromString(@"UITapGestureRecognizer")]) {
-        UITapGestureRecognizer *tapGesture = (UITapGestureRecognizer *)gestureRecognizer;
-        if (tapGesture.numberOfTapsRequired == 2) {
-            [gestureRecognizer requireGestureRecognizerToFail:otherGestureRecognizer];
-            return NO;
-        }
-    }
-    return YES;
-}
-
 #pragma mark - toolBar Action
 
 - (void)leftRotation {
@@ -248,64 +247,27 @@
 
     _imageView.transform = CGAffineTransformRotate(_imageView.transform, - M_PI_2);
     
-    if (_scrollView.minimumZoomScale == 1) {
-        _scrollView.minimumZoomScale = _scrollView.frame.size.width/_imageView.frame.size.width;
+    if (isProtrait) {
+        
         isProtrait = NO;
+        
     }else {
-        _scrollView.minimumZoomScale = 1;
         isProtrait = YES;
     }
-    [_scrollView setZoomScale:_scrollView.minimumZoomScale animated:NO];
     
-    NSLog(@"frame :%@",NSStringFromCGRect(_containerView.frame));
-//    CGRect tmp = _containerView.frame;
-//    tmp.origin.x = 0;
-//    tmp.origin.y = 0;
-//    _containerView.bounds = tmp;
-    NSLog(@"bounds:%@",NSStringFromCGRect(_containerView.bounds));
-    NSLog(@"ImageView:%@",NSStringFromCGRect(_imageView.frame));
-    
-    CGRect rct = _imageView.frame;
-    rct.origin.x = 0;
-    rct.origin.y = 0;
-    _imageView.frame = rct;
-    
-    NSLog(@"-----%@",NSStringFromCGRect(_imageView.bounds));
-    NSLog(@"-=-=-=-=-=-===%@",NSStringFromCGRect(_imageView.frame));
-
-//    NSLog(@"\n contentInset:%@,\n contentSize:%@ ,\n frmae:%@ \n\n",NSStringFromUIEdgeInsets(_scrollView.contentInset),NSStringFromCGSize(_scrollView.contentSize),NSStringFromCGRect(_scrollView.frame));
+    [self imageDidChange];
+    _imageView.frame = _containerView.bounds;
 }
 
 - (void)rightRotation {
     NSLog(@"右转");
     
-//    _imageView.transform = CGAffineTransformRotate(_imageView.transform, M_PI_2);
-//    
-//    if (_imageView.frame.size.width > _scrollView.frame.size.width) {
-//        _scrollView.minimumZoomScale = _scrollView.frame.size.width/_imageView.frame.size.width;
-//        isProtrait = NO;
-//    }else {
-//        _scrollView.minimumZoomScale = 1;
-//        isProtrait = YES;
-//    }
-//    
-//    [_scrollView setZoomScale:_scrollView.frame.size.width/_imageView.frame.size.width animated:NO];
-    
     _imageView.transform = CGAffineTransformRotate(_imageView.transform, M_PI_2);
     
-    if (_scrollView.minimumZoomScale == 1) {
-        _scrollView.minimumZoomScale = _scrollView.frame.size.width/_imageView.frame.size.width;
-        isProtrait = NO;
-    }else {
-        _scrollView.minimumZoomScale = 1;
-        isProtrait = YES;
-    }
-    [_scrollView setZoomScale:_scrollView.minimumZoomScale animated:NO];
+    isProtrait = isProtrait ? NO : YES;
     
-    CGRect rct = _imageView.frame;
-    rct.origin.x = 0;
-    rct.origin.y = 0;
-    _imageView.frame = rct;
+    [self imageDidChange];
+    _imageView.frame = _containerView.bounds;
 }
 
 - (void)zoomOut {

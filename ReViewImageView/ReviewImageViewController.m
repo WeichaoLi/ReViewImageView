@@ -47,10 +47,7 @@
     NSData *data2 = [[NSData alloc] initWithContentsOfURL:_url2];
     imageView2.image = [UIImage imageWithData:data2];
     
-//    NSURL *_url = [[NSURL alloc] initWithString:@"http://www.jingan.gov.cn/newscenter/jobnews/201410/W020141024576266359059.jpg"];
-//    _ImageView.image = [UIImage imageNamed:@"5.png"];
-    
-    _imageViews = [NSMutableArray arrayWithObjects:imageView1, imageView2, nil];
+    _imageViews = [NSMutableArray arrayWithObjects:imageView1,imageView2, nil];
 }
 
 - (void)loadView {
