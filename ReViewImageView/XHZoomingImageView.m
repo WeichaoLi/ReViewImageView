@@ -306,7 +306,7 @@
 #pragma mark prompt
 
 - (void)showPrompt:(NSString *)message {
-    [self canPerformAction:@selector(hiddenPrompt) withSender:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hiddenPrompt) object:nil];
     if (promptLable == nil) {
         promptLable = [[UILabel alloc] initWithFrame:CGRectMake((self.frame.size.width - 180)/2, self.frame.size.height - 100, 180, 40)];
         promptLable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
